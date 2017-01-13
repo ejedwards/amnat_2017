@@ -1,0 +1,231 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+
+```{r}
+library(plyr)
+library(ggplot2)
+library(reshape2)
+library(gridExtra)
+library(grid)
+library(stringr)
+
+
+
+D <- read.table("~/Dropbox/working papers/amnat_phenology/figure3analysis/phen_sept2016_cleaned.txt", header=TRUE)
+D$date = as.Date(D$date)
+D$species = as.factor(D$species)
+D$ind = as.factor(D$ind)
+type<-read.table("~/Dropbox/working papers/amnat_phenology/figure3analysis/phenotypes.txt", header=TRUE)
+D<-merge(D,type)
+
+
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+```{r}
+meltD<-melt(D, id.vars=c('species', 'ind', 'date', 'jday', 'habit', 'habit_pl'), measure.vars=c('new', 'senesced'))
+head(meltD)
+
+yyyy = meltD %>% filter(!is.na(value)) %>% filter(value>0) 
+expanded = yyyy[rep(1:nrow(yyyy), times = yyyy$value),]
+
+expanded2<-subset(expanded, habit_pl!='dne' & habit_pl!='evB')
+ggplot(data=subset(expanded2, variable=='new'), aes(jday, fill=habit_pl)) + geom_density(alpha=.3)
+ggplot(data=subset(expanded2, variable=='senesced'), aes(jday, fill=habit_pl)) + geom_density(alpha=.3)
+ggplot(data=expanded2, aes(jday, fill=variable)) + geom_density() + facet_grid(habit_pl~., scale='free')
+ggplot(data=expanded2, aes(x=jday, fill=variable)) + geom_histogram(position="dodge", bins=12) + facet_grid(habit_pl~., scale='free')
+```
+
+```{r}
+freq_spp<-as.data.frame(table(expanded$species, expanded$variable))
+freq_habit_pl<-as.data.frame(table(expanded2$habit_pl, expanded2$variable))
+colnames(freq_spp)<-c("species","type", "freq")
+colnames(freq_habit_pl)<-c("habit_pl", "type", "freq")
+evT<-subset(D, habit_pl=='evT')
+dT<-subset(D, habit_pl=='dT')
+dJ<-subset(D, habit_pl=='dJ')
+evJ<-subset(D, habit_pl=='evJ')
+evTalt<-subset(evT, species!='luzonicum_farm')
+evJalt<-subset(evJ, species!='erosum')
+
+arbicolum<-subset(D, species=='arbicolum')
+awabuki<-subset(D, species=='awabuki')
+betulifolium<-subset(D, species=='betulifolium')
+bitchiuense<-subset(D, species=='bitchiuense')
+clemensae<-subset(D, species=='clemensae')
+dilatatum<-subset(D, species=='dilatatum')
+erosum<-subset(D, species=='erosum')
+furcatum<-subset(D, species=='furcatum')
+integrifolium<-subset(D, species=='integrifolium')
+japonicum<-subset(D, species=='japonicum')
+luzonicum_farm<-subset(D, species=='luzonicum_farm')
+parvifolium<-subset(D, species=='parvifolium')
+phlebotrichum<-subset(D, species=='phlebotrichum')
+propinquum<-subset(D, species=='propinquum')
+sieboldii<-subset(D, species=='sieboldii')
+sympodiale<-subset(D, species=='sympodiale')
+taitoense<-subset(D, species=='taitoense')
+taiwanianum<-subset(D, species=='taiwanianum')
+urceolatum<-subset(D, species=='urceolatum')
+vernicosum<-subset(D, species=='vernicosum')
+```
+
+
+```{r automated_plots, echo=TRUE}
+
+  species_all = as.character(D$species) %>% unique() %>% as.list()
+
+  habits = D[c("species", "habit_pl")] %>% 
+    unique() %>%
+    arrange( habit_pl )
+
+
+  species_all[[ length(species_all) + 1  ]] = c( "bitchiuense", "dilatatum", "furcatum", "phlebotrichum", "sieboldii", "urceolatum" )
+  species_all[[ length(species_all) + 1  ]] = c( "clemensae", "vernicosum" )
+  species_all[[ length(species_all) + 1  ]] = c( "awabuki", "japonicum", "erosum" )
+  species_all[[ length(species_all) + 1  ]] = c( "arbicolum", "integrifolium", "luzonicum_farm", "propinquum", "taitoense", "taiwanianum" )
+  species_all[[ length(species_all) + 1  ]] = c( "betulifolium", "parvifolium", "sympodiale" )
+  
+  habit_pl_all = unique(as.character(D$habit_pl))
+
+  hybrid_plot = function( target_species ){
+    
+    D_sub = D %>% filter( species %in% target_species )
+    
+    freq_new = 
+      freq_spp %>% 
+      filter(species %in% target_species) %>% 
+      filter(type=="new") %>%
+      .$freq %>% 
+      as.integer()
+    
+    freq_senesced = 
+      freq_spp %>% 
+      filter(species %in% target_species) %>% 
+      filter(type=="senesced") %>%
+      .$freq %>% 
+      as.integer()
+    
+    samples <- sapply( 
+        1:1000, function(x) sample( x=D_sub$jday, size=freq_new, replace=TRUE) 
+      ) %>%
+      as.vector()
+    
+    y = data.frame( jday=samples )
+    y$type <- 'null_distribution'
+    
+    g_hist_all_new = 
+      y %>% 
+      ggplot() +
+      geom_histogram(aes(x=jday)) +
+      ggtitle( "Histogram of null distribution" ) +
+      annotate("text", x=200, y=Inf, hjust=0, vjust=2, label = as.character( mean(y$jday)) )
+    
+    x <- expanded %>%
+      filter( variable == 'new' & species %in% target_species )
+    
+    g_hist_jday_new = 
+      x %>% 
+      ggplot() +
+      geom_histogram(aes(x=jday)) +
+      ggtitle( "Histogram of sample distribution" ) +
+      annotate( "text", x=100, y=Inf, hjust=0, vjust=2, label = as.character( mean(x$jday)) )
+    
+    p_new = wilcox.test(x$jday, y$jday, exact=FALSE)$p.value
+    
+    den_plot <- as.data.frame(x$jday)
+    den_plot$type <- 'sample_distribution'
+    colnames(den_plot)<-c('jday','type')
+    den_plot<-rbind(den_plot,y)
+    
+    g_density_new = 
+      ggplot(data=den_plot, aes(jday, fill=type)) + 
+      geom_density(alpha=.3) + 
+      labs(title=paste( c(target_species, "new"), sep=" ", collapse=" " )) + 
+      annotate( "text", x=200, y=Inf, hjust=0, vjust=2,  label = as.character( p_new ) )
+    
+
+    samples <- sapply( 
+        1:1000, function(x) sample( x=D_sub$jday, size=freq_senesced, replace=TRUE) 
+      ) %>%
+      as.vector()
+    
+    y = data.frame( jday=samples )
+    y$type <- 'null_distribution'
+    
+    g_hist_all_senesced = 
+      y %>% 
+      ggplot() +
+      geom_histogram(aes(x=jday)) +
+      ggtitle( "Histogram of null" ) +
+      annotate( "text", x=200, y=Inf, hjust=0, vjust=2, label = as.character( mean(y$jday)) )
+      
+    x <- expanded %>%
+      filter( variable == 'senesced' & species %in% target_species )
+    
+    g_hist_jday_senesced = 
+      x %>% 
+      ggplot() +
+      geom_histogram(aes(x=jday)) +
+      ggtitle( "Histogram of sample") +
+      annotate( "text", x=200, y=Inf, hjust=0, vjust=2,   label = as.character( mean(x$jday)) )
+    
+    p_senesced = wilcox.test(x$jday, y$jday, exact=FALSE)$p.value
+    
+    den_plot <- as.data.frame(x$jday)
+    den_plot$type <- 'sample_distribution'
+    colnames(den_plot)<-c('jday','type')
+    den_plot<-rbind(den_plot,y)
+    
+    g_density_senesced = 
+      ggplot(data=den_plot, aes(jday, fill=type)) + 
+      geom_density(alpha=.3) + 
+      labs(title=paste( c(target_species, "senesced"), sep=" ", collapse=" " )) + 
+      annotate( "text", x=200, y=Inf, hjust=0, vjust=2,  label = as.character( p_senesced ) )
+    
+    lay = rbind(
+      c(1, 2),
+      c(3, 3),
+      c(4, 5),
+      c(6, 6)
+    )
+    g_summary = arrangeGrob(
+      g_hist_all_new,
+      g_hist_jday_new, 
+      g_density_new, 
+      g_hist_all_senesced,
+      g_hist_jday_senesced, 
+      g_density_senesced, 
+      layout_matrix = lay
+    )
+    
+    return(g_summary)
+    
+  }
+  
+  summary_plots = lapply(species_all, hybrid_plot)
+  
+  for( i in 1:length(summary_plots) ){ 
+    name = str_c( species_all[i], ".pdf" )
+    ggsave(name, summary_plots[[i]]) 
+    
+  }
+  
+
+```
+
+
+
+
+
+
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
