@@ -1,0 +1,269 @@
+#NEXUS
+[R-package PHYTOOLS, Sat Dec 31 16:19:19 2016]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 128;
+	TAXLABELS
+		acerifolium
+		acutifolium
+		amplificatum
+		anabaptista
+		annamensis
+		atrocyaneum
+		australe
+		ayavacense
+		beccarii
+		betulifolium
+		blandum
+		brachyandrum
+		brachybotryum
+		bracteatum
+		buddleifolium
+		burejaeticum
+		carlesii
+		cassinoides
+		caudatum
+		chingii
+		ciliatum
+		cinnamomifolium
+		clemensiae
+		colebrookeanum
+		coriaceum
+		corylifolium
+		costaricanum
+		cotinifolium
+		cylindricum
+		davidii
+		dentatum
+		dilatatum
+		discolor
+		disjunctum
+		divaricatum
+		edule
+		elatum
+		ellipticum
+		erosum
+		erubescens
+		farreri
+		flavescens
+		foetens
+		foetidum
+		furcatum
+		grandiflorum
+		hallii
+		hartwegii
+		henryi
+		hispidulum
+		hupehense
+		ichangense
+		inopinatum
+		integrifolium
+		jamesonii
+		japonicum
+		jucundum
+		kansuense
+		koreanum
+		lancifolium
+		lantana
+		lantanoides
+		lasiophyllum
+		lautum
+		lentago
+		lepidotulum
+		lobophyllum
+		loeseneri
+		lutescens
+		luzonicum
+		macrocephalum
+		melanocarpum
+		microcarpum
+		microphyllum
+		molle
+		mongolicum
+		mullaha
+		nervosum
+		nudum
+		obtectum
+		obtusatum
+		odoratissimum
+		oliganthum
+		opulus
+		orientale
+		parvifolium
+		phlebotrichum
+		pichinchense
+		plicatum
+		propinquum
+		prunifolium
+		punctatum
+		rafinesquianum
+		recognitum
+		rhytidophyllum
+		rigidum
+		rufidulum
+		sambucinum
+		sargentii
+		scabrellum
+		schensianum
+		seemenii
+		sempervirens
+		sieboldii
+		stellato_tomentosum
+		stenocalyx
+		stipitatum
+		subalpinum
+		sulcatum
+		suspensum
+		sympodiale
+		taitoense
+		taiwanianum
+		tashiroi
+		ternatum
+		tinoides
+		tinus
+		toronis
+		trilobum
+		triphyllum
+		undulatum
+		urceolatum
+		utile
+		veitchii
+		venustum
+		vernicosum
+		villosum
+		wrightii
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	acerifolium,
+		2	acutifolium,
+		3	amplificatum,
+		4	anabaptista,
+		5	annamensis,
+		6	atrocyaneum,
+		7	australe,
+		8	ayavacense,
+		9	beccarii,
+		10	betulifolium,
+		11	blandum,
+		12	brachyandrum,
+		13	brachybotryum,
+		14	bracteatum,
+		15	buddleifolium,
+		16	burejaeticum,
+		17	carlesii,
+		18	cassinoides,
+		19	caudatum,
+		20	chingii,
+		21	ciliatum,
+		22	cinnamomifolium,
+		23	clemensiae,
+		24	colebrookeanum,
+		25	coriaceum,
+		26	corylifolium,
+		27	costaricanum,
+		28	cotinifolium,
+		29	cylindricum,
+		30	davidii,
+		31	dentatum,
+		32	dilatatum,
+		33	discolor,
+		34	disjunctum,
+		35	divaricatum,
+		36	edule,
+		37	elatum,
+		38	ellipticum,
+		39	erosum,
+		40	erubescens,
+		41	farreri,
+		42	flavescens,
+		43	foetens,
+		44	foetidum,
+		45	furcatum,
+		46	grandiflorum,
+		47	hallii,
+		48	hartwegii,
+		49	henryi,
+		50	hispidulum,
+		51	hupehense,
+		52	ichangense,
+		53	inopinatum,
+		54	integrifolium,
+		55	jamesonii,
+		56	japonicum,
+		57	jucundum,
+		58	kansuense,
+		59	koreanum,
+		60	lancifolium,
+		61	lantana,
+		62	lantanoides,
+		63	lasiophyllum,
+		64	lautum,
+		65	lentago,
+		66	lepidotulum,
+		67	lobophyllum,
+		68	loeseneri,
+		69	lutescens,
+		70	luzonicum,
+		71	macrocephalum,
+		72	melanocarpum,
+		73	microcarpum,
+		74	microphyllum,
+		75	molle,
+		76	mongolicum,
+		77	mullaha,
+		78	nervosum,
+		79	nudum,
+		80	obtectum,
+		81	obtusatum,
+		82	odoratissimum,
+		83	oliganthum,
+		84	opulus,
+		85	orientale,
+		86	parvifolium,
+		87	phlebotrichum,
+		88	pichinchense,
+		89	plicatum,
+		90	propinquum,
+		91	prunifolium,
+		92	punctatum,
+		93	rafinesquianum,
+		94	recognitum,
+		95	rhytidophyllum,
+		96	rigidum,
+		97	rufidulum,
+		98	sambucinum,
+		99	sargentii,
+		100	scabrellum,
+		101	schensianum,
+		102	seemenii,
+		103	sempervirens,
+		104	sieboldii,
+		105	stellato_tomentosum,
+		106	stenocalyx,
+		107	stipitatum,
+		108	subalpinum,
+		109	sulcatum,
+		110	suspensum,
+		111	sympodiale,
+		112	taitoense,
+		113	taiwanianum,
+		114	tashiroi,
+		115	ternatum,
+		116	tinoides,
+		117	tinus,
+		118	toronis,
+		119	trilobum,
+		120	triphyllum,
+		121	undulatum,
+		122	urceolatum,
+		123	utile,
+		124	veitchii,
+		125	venustum,
+		126	vernicosum,
+		127	villosum,
+		128	wrightii
+	;
+	TREE * UNTITLED = [&R] (((((((((((((((80:0.06447761822,(63:0.05320851179,((116:0.01556096282,121:0.01556096282):0.02388509621,(102:0.01832031859,4:0.01832031859):0.02112572712):0.01376245273):0.01126911976):0.007852586157,(35:0.05264374845,(107:0.04535067326,(55:0.03403479091,118:0.03403479091):0.01131588235):0.00729307523):0.01968645585):0.01314841566,(120:0.06629622887,(88:0.05321428865,8:0.05321428865):0.01308194022):0.01918239113):0.01155015645,47:0.09702877641):0.05454772874,((57:0.05207934865,64:0.05207934865):0.06164227593,(81:0.08721944462,((34:0.04939335542,127:0.04939335542):0.02357348465,(105:0.04555403767,(27:0.02955682563,48:0.02955682563):0.01599719871):0.02741280242):0.01425260452):0.02650216666):0.0378548939):0.01435440815,((68:0.08693571561,(19:0.03778872701,73:0.03778872701):0.04914698862):0.02899639777,(106:0.09164770798,(21:0.05496438864,74:0.05496438864):0.03668331924):0.02428440543):0.04999879996):0.01604451444,(11:0.05457841318,33:0.05457841318):0.1273970146):0.02049081046,(125:0.1340116727,(2:0.01074910606,109:0.01074910606):0.1232625667):0.06845456553):0.03021051294,(94:0.04239758755,(100:0.02056070116,31:0.02056070116):0.02183687306):0.190279177):0.1501114522,(((93:0.02759244946,75:0.02759244946):0.0222828325,14:0.04987528196):0.08172334319,(7:0.04869412163,38:0.04869412163):0.0829045036):0.2511895914):0.2873783736,((((99:0.0873832214,84:0.0873832214):0.1062028909,119:0.1935861123):0.1416431247,(59:0.05904848208,36:0.05904848208):0.2761807549):0.2516323953,((((98:0.0237225182,53:0.0237225182):0.1454888234,115:0.1692113416):0.1724024399,((50:0.05693940006,126:0.05693940006):0.1335747067,9:0.1905141068):0.1510996746):0.09632359035,(((25:0.01377994477,29:0.01377994477):0.3281272655,58:0.3419071969):0.0447156369,(85:0.327502897,(1:0.2847778461,(((((((((((103:0.04844558607,5:0.04844558607):0.01217544057,72:0.06062102663):0.007202855074,60:0.0678238817):0.008051268371,((10:0.01416657432,70:0.01416657432):0.0401926287,(87:0.04389958122,39:0.04389959454):0.0104596218):0.02151594706):0.02005475659,26:0.09592990666):0.009961051488,((114:0.00996249168,86:0.00996249168):0.05026421275,(54:0.03788339439,56:0.03788339439):0.02234331003):0.04566425373):0.01461692722,128:0.1205078854):0.01293456103,32:0.1334424331):0.06000267174,(67:0.1020954684,(52:0.04953581356,42:0.04953581356):0.05255965477):0.09134963654):0.02352969681,((44:0.04616630537,12:0.04616630537):0.07729265837,51:0.123458977):0.0935158379):0.02407462762,77:0.2410494293):0.04372841681):0.04272505089):0.05911995019):0.05131453793):0.1489242739):0.08330494456):0.04469251668,((((30:0.0215480146,22:0.0215480146):0.1411433991,90:0.1626914137):0.06662670567,6:0.2293181193):0.2234923792,(96:0.06988790559,117:0.06988790559):0.3829225929):0.2620486083):0.124257285,((122:0.07532538241,113:0.07532538241):0.6457154197,(3:0.6007183113,(((24:0.1605993697,69:0.1605993697):0.06224498723,89:0.2228443703):0.263125548,(((((((((83:0.01385560845,108:0.01385560845):0.01289103755,40:0.026746646):0.01224501714,20:0.03899166314):0.02403323442,13:0.06302489756):0.01970159459,49:0.08272649216):0.02766199462,((112:0.0515198145,110:0.0515198145):0.04655952285,41:0.09807933739):0.01230914941):0.08769522586,(82:0.1348498813,104:0.1348498813):0.06323384464):0.03471129264,43:0.2327950052):0.07788231157,46:0.3106773301):0.1752925881):0.1147483931):0.1203225041):0.1180755765):0.0656239014,((((45:0.07141997242,62:0.07141997242):0.1161281711,111:0.1875481436):0.03103224198,78:0.2185803855):0.5965945242,((((((((((61:0.01791801009,16:0.01791801009):0.04487486406,76:0.06279287411):0.04254675629,(124:0.06231520554,(15:0.04822227467,95:0.04822227467):0.01409293083):0.04302441159):0.03981626675,28:0.1451558972):0.02116158109,101:0.1663174783):0.0233246163,17:0.1896420946):0.02373261913,123:0.2133747137):0.07058005748,71:0.2839547579):0.135442622,(66:0.07252965695,92:0.07252965695):0.346867723):0.09923542317,(((91:0.1207056509,(97:0.09062053415,37:0.09062053415):0.03008510338):0.08775275615,65:0.2084583937):0.2452990325,(79:0.08144533119,18:0.08144533119):0.3723120949):0.06487537689):0.29654212):0.08956537025):0.09496856804,23:0.9997088481);
+END;

@@ -15,10 +15,11 @@ library(reshape2)
 library(gridExtra)
 library(grid)
 library(stringr)
+library(tidyverse)
 
 
 
-D <- read.table("~/Dropbox/working papers/amnat_phenology/figure3analysis/phen_sept2016_cleaned.txt", header=TRUE)
+D <- read.table("~/Dropbox/working papers/amnat_phenology/revisions/final_analyses/phenology/phen_sept2016_cleaned.txt", header=TRUE)
 D$date = as.Date(D$date)
 D$species = as.factor(D$species)
 D$ind = as.factor(D$ind)
