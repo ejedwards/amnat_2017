@@ -12,6 +12,8 @@ README.md : This very file.
 
 	*comparative_analyses.Rmd (R markdown notebook, including commands for plotting trees, ancestral state reconstruction, and Pagel, PIC, and threshold analyses)
 
+	*MrBayes_max_cred_tree.nex (138-taxon bayesian consensus tree with posterior probability values for all nodes, from Spriggs et al. 2015 (tree from which our 120-taxon tree was pruned))
+	
 /phenology/: this subfolder contains several further subfolders, each pertaining to a particular analyses of the phenological transect data:
 
 	/fig3/: contains data, script, and subplots required for figure 3.
